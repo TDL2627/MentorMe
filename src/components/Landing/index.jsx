@@ -4,6 +4,8 @@ const Landing = () => {
 
 
   return (
+    <>
+ 
     <div className="w-full h-full text-center">
       <div>
         <h1 className="text-3xl text-red-500 font-bold underline ">Mentor Me</h1>
@@ -12,6 +14,7 @@ const Landing = () => {
         Lets go
       </Link>
     </div>
+    </>
   );
 }
 
