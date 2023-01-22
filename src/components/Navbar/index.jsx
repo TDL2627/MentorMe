@@ -3,6 +3,7 @@ import Image from 'next/image'
 import logo from '../../../public/images/logo.png'
 import Modal from '../elements/Modal';
 import { useState } from 'react';
+import { Login,Register } from '../elements/Forms';
 
 
 const Navigation = () => {
@@ -10,7 +11,7 @@ const Navigation = () => {
   return (
       <>
      
-    <nav className="bg-black p-2 sticky w-full top-0 flex justify-between items-center">
+    <nav className="bg-black z-[270] p-2 sticky w-full top-0 flex justify-between items-center">
     <Link href="/">
     <Image
         src={logo}
@@ -30,15 +31,29 @@ const Navigation = () => {
       }}>
         <p className="text-white font-medium mr-4 cursor-pointer">Login</p>
       </button>
-      <Link href="/contact">
-        <p className="text-white font-medium cursor-pointer">Contact</p>
-      </Link>
+      <button onClick={()=>{
+          if(showModal){
+            setShowModal("")
+          }else{
+            setShowModal("register")
+          }
+          
+      }}>
+        <p className="text-white font-medium cursor-pointer">Register</p>
+      </button>
     </div>
   </nav>
 {showModal == "login" &&(
     <>
     <Modal setShowModal={setShowModal} title="login">
-        <p>Aye</p>
+        <Login/>
+    </Modal>
+    </>
+)}
+{showModal == "register" &&(
+    <>
+    <Modal setShowModal={setShowModal} title="register">
+        <Register/>
     </Modal>
     </>
 )}
