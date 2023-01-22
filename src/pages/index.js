@@ -1,10 +1,10 @@
-import Home from "../components/Home"
+import Landing from "../components/Landing"
 
 
 
 
-function HomePage() {
-    return <Home/>
+function LandingPage() {
+    return <Landing/>
   }
   
-  export default HomePage
+  export default LandingPage
