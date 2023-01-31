@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import bg from "../../../public/images/bg.jpg";
 import About from "../About";
+import SmoothScrollButton from "../elements/scrollToButton";
 const Landing = () => {
   return (
     <>
@@ -18,9 +19,10 @@ const Landing = () => {
           <h1 className="md:text-7xl text-2xl font-black text-white text-center leading-tight ">
             Mentor Me
           </h1>
+          <SmoothScrollButton link="about" title="Lets get it" />
         </div>
       </div>
-<About/>
+      <About />
     </>
   );
 };
