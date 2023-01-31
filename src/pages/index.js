@@ -1,10 +1,10 @@
-import Landing from "../components/Landing"
-
-
-
-
+import Landing from "../components/Landing";
 function LandingPage() {
-    return <Landing/>
-  }
-  
-  export default LandingPage
+  return (
+    <>
+      <Landing />
+    </>
+  );
+}
+
+export default LandingPage;

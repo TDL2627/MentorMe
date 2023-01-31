@@ -1,7 +1,7 @@
 import Link from "next/link";
 const Footer = () => {
     return (
-      <footer className="bg-black text-white  p-4 w-full ">
+      <footer className="bg-black text-white border-t border-white  p-4 w-full ">
         <div className="container mx-auto text-xs">
           <div className="flex justify-between items-center">
             <p>Copyright © {new Date().getFullYear()} TDL2627</p>

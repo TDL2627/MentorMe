@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import bg from "../../../public/images/bg.jpg";
+import About from "../About";
 const Landing = () => {
   return (
     <>
@@ -10,7 +11,7 @@ const Landing = () => {
           <Image
             src={bg}
             alt="Picture of the author"
-            className="w-full md:h-[600px] object-cover object-center "
+            className="w-full  object-cover object-center "
           />
         </div>
         <div className="md:top-40 top-20 w-full absolute">
@@ -19,6 +20,7 @@ const Landing = () => {
           </h1>
         </div>
       </div>
+<About/>
     </>
   );
 };
