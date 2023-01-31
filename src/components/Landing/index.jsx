@@ -6,12 +6,15 @@ const Landing = () => {
   return (
     <>
       <div className="w-full h-full text-center">
-        <div className="">
+        <div className="w-full h-full">
+          <Image
+            src={bg}
+            alt="Picture of the author"
+            className="w-full md:h-[600px] object-cover object-center "
+          />
         </div>
-        <Image src={bg} alt="Picture of the author" className="w-full h-full object-cover object-center " />
-
-        <div className="top-40 w-full absolute">
-          <h1 className="text-7xl font-black text-white text-center leading-tight ">
+        <div className="md:top-40 top-20 w-full absolute">
+          <h1 className="md:text-7xl text-2xl font-black text-white text-center leading-tight ">
             Mentor Me
           </h1>
         </div>

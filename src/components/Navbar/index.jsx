@@ -9,7 +9,7 @@ const Navigation = () => {
   const [showModal, setShowModal] = useState("");
   return (
     <>
-      <nav className="bg-black z-[270] p-2 sticky w-full top-0 flex justify-between items-center">
+      <nav className="bg-black z-[270] p-2 sticky w-full top-0 flex justify-between items-center text-xs md:text-lg">
         <Link href="/">
           <Image
             src={logo}
