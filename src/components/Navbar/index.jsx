@@ -3,10 +3,13 @@ import Image from "next/image";
 import logo from "../../../public/images/logo.png";
 import Modal from "../elements/Modal";
 import { useState } from "react";
+import { useAccountStore } from "../../store";
 import { Login, Register } from "../elements/Forms";
 
 const Navigation = () => {
   const [showModal, setShowModal] = useState("");
+  const {logout, userId}=useAccountStore();
+
   return (
     <>
       <nav className="bg-black z-[270] p-2 sticky w-full top-0 flex justify-between items-center text-xs md:text-lg">
@@ -19,7 +22,8 @@ const Navigation = () => {
           />
         </Link>
         <div className="flex">
-          <button
+          {userId === null ? (<>
+            <button
             onClick={() => {
               setShowModal("login");
             }}
@@ -33,19 +37,29 @@ const Navigation = () => {
           >
             <p className="text-white font-medium cursor-pointer">Register</p>
           </button>
+          </>):(<>
+            <button
+            onClick={() => {
+             logout()
+            }}
+          >
+            <p className="text-white font-medium cursor-pointer">Logout</p>
+          </button>
+          </>)}
+       
         </div>
       </nav>
       {showModal == "login" && (
         <>
           <Modal setShowModal={setShowModal} title="login">
-            <Login />
+            <Login setShowModal={setShowModal}/>
           </Modal>
         </>
       )}
       {showModal == "register" && (
         <>
           <Modal setShowModal={setShowModal} title="register">
-            <Register />
+            <Register  setShowModal={setShowModal}/>
           </Modal>
         </>
       )}

@@ -12,6 +12,7 @@ import {
 
 export const useStore = create((set, get) => ({
   user: {},
+  userId: null,
   signUp: async (person) => {
     const auth = getAuth();
     try {
@@ -19,7 +20,7 @@ export const useStore = create((set, get) => ({
       await createUserWithEmailAndPassword(auth, person.email, person.password);
       await setDoc(doc(db, "users", person.email), person, { merge: true });
     } catch (error) {
-      console.log(error.message, "aye wrong");
+      console.log(error.message, "aye wrong sign up");
     }
   },
   login: async (person) => {
@@ -28,9 +29,21 @@ export const useStore = create((set, get) => ({
       console.log(person, "aye we here");
       await signInWithEmailAndPassword(auth, person.email, person.password);
       const user = auth.currentUser;
-      console.log(user,"aye");
+      console.log(user?.uid, " aye logged in ");
+      sessionStorage.setItem("userId", user.uid);
+      set({userId:user?.uid})
     } catch (error) {
-      console.log(error.message, "aye wrong");
+      console.log(error.message, "aye wrong login");
+    }
+  },
+  logout: async () => {
+    const auth = getAuth();
+    try {
+      await signOut(auth);
+      sessionStorage.setItem("userId", "");
+      console.log("logged out");
+    } catch (error) {
+      console.log(error.message, "aye wrong login");
     }
   },
 }));

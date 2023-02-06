@@ -1,20 +1,27 @@
 import { useState } from "react";
 import { useAccountStore } from "../../../store";
+import { useRouter } from "next/router";
 
-export function Login() {
+export function Login(props) {
+  const { setShowModal } = props;
   const { login } = useAccountStore();
+  const router = useRouter();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     let person = {};
     person.email = email;
     person.password = password;
     login(person);
-    // Make a request to the backend to authenticate the user here
+    const userId = sessionStorage.getItem("userId")
+    if(userId !== ""){
+      router.push("/dashboard");
+      setShowModal("");
+    }
+    
   };
 
   return (
