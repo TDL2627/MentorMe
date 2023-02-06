@@ -1,14 +1,18 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
 import { useAccountStore } from "../../../store";
-export function Register() {
+export function Register(props) {
+  const { setShowModal } = props;
+
   const { signUp } = useAccountStore();
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [role, setRole] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const router = useRouter();
   const handleSubmit = (event) => {
+
     event.preventDefault();
     console.log("aye name: ", name);
     console.log("surname: ", surname);
@@ -21,6 +25,11 @@ export function Register() {
     person.email= email;
     person.password= password;
     signUp(person);
+    const userId = sessionStorage.getItem("userId")
+    if(userId !== ""){
+      router.push("/dashboard");
+      setShowModal("");
+    }
     // Make a request to the backend to register the user here
   };
 

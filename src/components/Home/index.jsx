@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useAccountStore } from "../../store";
+import { Loader } from "../elements/Loader";
 import Link from "next/link";
 const Home = () => {
   const { user } = useAccountStore();
@@ -10,6 +11,7 @@ const Home = () => {
           Mentor Me
         </h1>
         <p className="text-white">Welcome {user?.name}</p>
+<Loader/>
       </div>
     </div>
   );

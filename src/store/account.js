@@ -19,6 +19,10 @@ export const useStore = create((set, get) => ({
       console.log(person, "aye we here");
       await createUserWithEmailAndPassword(auth, person.email, person.password);
       await setDoc(doc(db, "users", person.email), person, { merge: true });
+      const user = auth.currentUser;
+      console.log(user?.uid, " aye logged in ");
+      sessionStorage.setItem("userId", user.uid);
+      set({userId:user?.uid})
     } catch (error) {
       console.log(error.message, "aye wrong sign up");
     }
@@ -42,6 +46,7 @@ export const useStore = create((set, get) => ({
       await signOut(auth);
       sessionStorage.setItem("userId", "");
       console.log("logged out");
+      set({userId:null})
     } catch (error) {
       console.log(error.message, "aye wrong login");
     }
