@@ -11,7 +11,7 @@ const Home = () => {
           Mentor Me
         </h1>
         <p className="text-white">Welcome {user?.name}</p>
-<Loader/>
+        <Loader />
       </div>
     </div>
   );

@@ -16,12 +16,11 @@ export function Login(props) {
     person.email = email;
     person.password = password;
     login(person);
-    const userId = sessionStorage.getItem("userId")
-    if(userId !== ""){
+    const userId = sessionStorage.getItem("userId");
+    if (userId !== "") {
       router.push("/dashboard");
       setShowModal("");
     }
-    
   };
 
   return (
